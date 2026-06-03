@@ -1,4 +1,4 @@
-# CrowdPlay: Real-Time Multiplayer Synthwave Jigsaw Puzzle
+# CrowdPlay: Real-Time Multiplayer Synthwave Jigsaw Puzzle(INTERNSHIP)
 
 Welcome to **CrowdPlay**, a real-time, mobile-controlled multiplayer jigsaw puzzle game built with Node.js, Express, and Socket.io. 
 
@@ -130,7 +130,7 @@ admin123
 
 Then:
 1. Choose or upload a puzzle image.
-2. Set the puzzle rows and columns.
+2. Set the puzzle level
 3. Start the activity for room `DEMO`.
 
 #### Players
@@ -208,3 +208,32 @@ A complete CloudFormation template is provided under [cloudformation.yaml](file:
 1. An **ECS Cluster** running tasks on Fargate.
 2. An **Application Load Balancer** with listener rules routing HTTPS traffic to HTTP container instances.
 3. Integration support for an RDS PostgreSQL database instance and AWS ElastiCache Redis.
+
+##  Modifications Made
+
+### 🎮 Difficulty Levels Added
+- Easy → 3x3 puzzle
+- Medium → 4x6 puzzle
+- Hard → 6x8 puzzle
+
+### ⚙️ How it works
+Admin selects difficulty and puzzle size changes dynamically.
+
+### 🧠 Improvement
+- Better gameplay control
+- More replay value
+- Scalable difficulty system
+
+Assumptions--
+Puzzle dimensions are mapped directly to predefined difficulty levels.
+Existing game mechanics remain unchanged.
+
+Known Limitations--
+Only three predefined difficulty levels are available.
+Difficulty settings affect puzzle grid size only.
+
+Future Improvements--
+Custom grid sizes.
+Score multipliers based on difficulty.
+Time-based challenges.
+
