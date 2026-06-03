@@ -13,8 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const setupForm = document.getElementById('setupForm');
   const roomCodeInput = document.getElementById('roomCodeInput');
-  const gridRows = document.getElementById('gridRows');
-  const gridCols = document.getElementById('gridCols');
+ 
   const dropzone = document.getElementById('dropzone');
   const fileInput = document.getElementById('puzzleImageFile');
   const uploadStatus = document.getElementById('uploadStatus');
@@ -236,24 +235,49 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // Start the puzzle activity!
-  startActivityBtn.addEventListener('click', () => {
-    if (!activeRoomCode || !socket) return;
-    
-    const rows = parseInt(gridRows.value) || 4;
-    const cols = parseInt(gridCols.value) || 6;
-    
-    socket.emit('admin-start-activity', {
-      roomCode: activeRoomCode,
-      rows,
-      cols,
-      imageUrl: uploadedImageUrl // Null means it uses the default server-generated synthwave image
-    });
+ let currentRows = 4;
+let currentCols = 6;
+document.getElementById('difficulty').addEventListener('change', (e) => {
+  const level = e.target.value;
 
-    consoleLogMsg(`Activity jigsaw triggered (grid: ${rows}x${cols}). Slicing image...`);
-    activeRoomStatusDisp.textContent = 'ACTIVE';
-    activeRoomStatusDisp.className = 'value status-badge active';
-    startActivityBtn.disabled = true;
+  if (level === "easy") {
+    currentRows = 3;
+    currentCols = 3;
+  } 
+  else if (level === "medium") {
+    currentRows = 4;
+    currentCols = 4;
+  } 
+  else if (level === "hard") {
+    currentRows = 4;
+    currentCols = 3;
+  }
+
+  // Still update UI for display only
+  document.getElementById('gridRows').value = currentRows;
+  document.getElementById('gridCols').value = currentCols;
+});
+//start activity
+ startActivityBtn.addEventListener('click', () => {
+  if (!activeRoomCode || !socket) return;
+
+  const rows = currentRows;
+  const cols = currentCols;
+
+  socket.emit('admin-start-activity', {
+    roomCode: activeRoomCode,
+    rows,
+    cols,
+    imageUrl: uploadedImageUrl
   });
+
+  consoleLogMsg(`Activity jigsaw triggered (grid: ${rows}x${cols}). Slicing image...`);
+
+  activeRoomStatusDisp.textContent = 'ACTIVE';
+  activeRoomStatusDisp.className = 'value status-badge active';
+  startActivityBtn.disabled = true;
+});
+
 
   // Reset the room session
   resetRoomBtn.addEventListener('click', () => {
