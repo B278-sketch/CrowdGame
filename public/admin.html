@@ -67,16 +67,46 @@
               </div>
             </div>
 
-            <div class="grid-2col form-group">
-              <div>
-                <label for="gridRows">Puzzle Rows (Height)</label>
-                <input type="number" id="gridRows" min="2" max="10" value="4">
-              </div>
-              <div>
-                <label for="gridCols">Puzzle Columns (Width)</label>
-                <input type="number" id="gridCols" min="2" max="12" value="6">
-              </div>
-            </div>
+            
+            <!--added levels for difficulty and auto fill of the grid columns and rows-->
+            <div class="form-group">
+  <label for="difficulty">Select Difficulty</label>
+
+  <select id="difficulty">
+    <option value="">-- Choose Level --</option>
+    <option value="easy">Easy (3 × 3)</option>
+    <option value="medium">Medium (4 × 4)</option>
+    <option value="hard">Hard (4 × 6)</option>
+  </select>
+</div>
+
+<!-- Grid information -->
+<div id="infoBox" class="info-box">
+  Select a difficulty level to configure the puzzle size.
+</div>
+
+<!-- Display selected rows and columns -->
+<div class="grid-2col form-group">
+  <div>
+    <label for="gridRows">Puzzle Rows (Height)</label>
+    <input
+      type="number"
+      id="gridRows"
+      readonly
+      placeholder="Rows will appear here"
+    >
+  </div>
+
+  <div>
+    <label for="gridCols">Puzzle Columns (Width)</label>
+    <input
+      type="number"
+      id="gridCols"
+      readonly
+      placeholder="Columns will appear here"
+    >
+  </div>
+</div>
 
             <div class="form-group">
               <label for="puzzleImageFile">Puzzle Board Image</label>
