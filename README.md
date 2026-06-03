@@ -210,6 +210,8 @@ A complete CloudFormation template is provided under [cloudformation.yaml](file:
 3. Integration support for an RDS PostgreSQL database instance and AWS ElastiCache Redis.
 
 ##  Modifications Made
+Updated admin.html to improve UI and usability for selecting game settings.
+Modified admin.js to support dynamic difficulty levels and grid size control.
 
 ### 🎮 Difficulty Levels Added
 - Easy → 3x3 puzzle
